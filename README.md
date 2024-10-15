@@ -1,28 +1,19 @@
-**KortexAI**
-KortexAI is a cutting-edge AI-powered solution generator built with modern web technologies. This project showcases my skills in front-end development, particularly in JavaScript and React, and serves as part of my professional portfolio.
+# KortexAI
 
-**Project Overview**
-KortexAI helps users generate solutions to their issues by analyzing prompts and crafting tailored solutions. The application is designed with a sleek, modern UI and provides real-time performance metrics for the AI's operations, giving users insights into accuracy, speed, efficiency, and reliability.
+KortexAI is a cutting-edge AI-powered solution generator built with modern web technologies. This project highlights my expertise in front-end development, particularly in **JavaScript** and **React**, and serves as part of my professional portfolio.
 
-**Key Features:**
-AI-Powered Solutions: Input a prompt, and KortexAI will generate a detailed, end-to-end solution.
-Performance Metrics: Real-time performance tracking of accuracy, speed, efficiency, and reliability.
-Responsive Design: Optimized for different screen sizes and devices.
-Interactive UI: Built using React to provide a seamless, dynamic user experience.
+## Project Overview
 
-**Screenshots:**
-![Screenshot 2024-10-02 013747](https://github.com/user-attachments/assets/5adcf045-f539-42cc-9c7f-b293a30e1a99)
+KortexAI helps users generate solutions by analyzing prompts and crafting tailored responses. The application is designed with a sleek, modern UI and provides real-time performance metrics, offering insights into **accuracy**, **speed**, **efficiency**, and **reliability**.
 
-![Screenshot 2024-10-02 013810](https://github.com/user-attachments/assets/1c8b49a0-c8b8-4833-8a0f-5b1dda10dec3)
+## Key Features
 
-
-![Screenshot 2024-10-02 013838](https://github.com/user-attachments/assets/c33ad714-6dcc-4049-8b2f-3452ea1115b5)
+- **AI-Powered Solutions:** Input a prompt, and KortexAI will generate a detailed, end-to-end solution.
+- **Performance Metrics:** Real-time tracking of performance metrics such as accuracy, speed, efficiency, and reliability.
+- **Responsive Design:** Optimized for multiple devices and screen sizes.
+- **Interactive UI:** Built with **React** for a seamless, dynamic user experience.
 
 
 
 
-**Video:**
-
-
-https://github.com/user-attachments/assets/56908c2c-e597-4b65-b3f7-e79700ec824e
 
