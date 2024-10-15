@@ -281,6 +281,50 @@ function App() {
         </div>
       </section>
 
+      <section className="ai-solutions-section">
+        <div className="container">
+          <h2 className="section-title">AI-Powered Solutions</h2>
+          <p className="section-subtitle">Revolutionizing industries with cutting-edge artificial intelligence</p>
+          
+          <div className="ai-capabilities">
+            {[
+              { icon: '🧠', title: 'Machine Learning', description: 'Advanced algorithms that learn and improve from experience' },
+              { icon: '🗣️', title: 'Natural Language Processing', description: 'Understand and generate human-like text with ease' },
+              { icon: '👁️', title: 'Computer Vision', description: 'Analyze and interpret visual data from the world' },
+              { icon: '📊', title: 'Predictive Analytics', description: 'Forecast trends and make data-driven decisions' }
+            ].map((capability, index) => (
+              <div key={index} className="ai-capability-card">
+                <span className="capability-icon">{capability.icon}</span>
+                <h3>{capability.title}</h3>
+                <p>{capability.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="ai-pipeline-section">
+        <div className="container">
+          <h2 className="section-title">KortexAI Pipeline</h2>
+          <p className="section-subtitle">Our streamlined process for delivering AI-powered solutions</p>
+          
+          <div className="ai-pipeline-steps">
+            {[
+              { number: '01', title: 'Data Ingestion', description: 'Collect and preprocess large volumes of data from various sources' },
+              { number: '02', title: 'AI Model Selection', description: 'Choose the most suitable AI models for your specific use case' },
+              { number: '03', title: 'Training & Optimization', description: 'Train models on your data and optimize for peak performance' },
+              { number: '04', title: 'Deployment & Integration', description: 'Seamlessly integrate AI solutions into your existing systems' }
+            ].map((step, index) => (
+              <div key={index} className="pipeline-step">
+                <span className="step-number">{step.number}</span>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <footer className="footer-section">
         <div className="background-section" ref={backgroundRef}>
           <div className="background-content">

@@ -516,27 +516,104 @@ body {
 
 /* AI Solution Box Styles */
 .ai-solution-box {
-  background-color: rgba(26, 26, 38, 0.95);
+  background: linear-gradient(135deg, rgba(26, 26, 38, 0.95), rgba(38, 38, 58, 0.95));
   border-radius: 20px;
   padding: 40px;
   width: 100%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   color: var(--text-color);
   margin: 0 auto;
+}
+
+.ai-solution-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.ai-solution-text {
+  flex: 1;
+  padding-right: 40px;
 }
 
 .ai-solution-box h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
-  color: var(--text-color);
-  text-align: center;
+  color: #ffffff;
+  font-weight: 700;
 }
 
-.ai-solution-box > p {
-  font-size: 1.2rem;
+.ai-solution-box p {
+  font-size: 1.1rem;
   margin-bottom: 30px;
-  text-align: center;
   color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.solution-output {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 25px;
+  margin-top: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.solution-output::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4a4af0, #6c63ff);
+}
+
+.solution-output p {
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+.ai-visual {
+  flex: 0 0 250px;
+  height: 250px;
+  background: conic-gradient(from 0deg, #4a4af0, #6c63ff, #4a4af0);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(74, 74, 240, 0.3);
+}
+
+.ai-visual::before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  background: rgba(26, 26, 38, 0.9);
+  border-radius: 50%;
+}
+
+.ai-visual::after {
+  content: 'AI';
+  position: relative;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #4a4af0;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+.ai-visual {
+  animation: pulse 3s infinite ease-in-out;
 }
 
 /* AI Pipeline Section */

@@ -25,6 +25,8 @@ function App() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const aiPipelineRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [userInput, setUserInput] = useState('');
+  const [generatedSolution, setGeneratedSolution] = useState('');
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -192,6 +194,12 @@ function App() {
     }
   };
 
+  const generateSolution = () => {
+    // Implement your solution generation logic here
+    // For example, you can use an API call to generate the solution based on userInput
+    // and then update the generatedSolution state with the result
+  };
+
   return (
     <div className="App">
       <header className="header">
@@ -286,51 +294,23 @@ function App() {
           <div className="background-content">
             <div className="ai-solution-box">
               <h2>AI Solutions</h2>
-              <p>Describe your issue and let our AI generate a solution for you!</p>
+              <p>Describe your challenge, and let our advanced AI craft a tailored solution just for you.</p>
               
-              {/* New AI Pipeline Section */}
-              <div className="ai-pipeline-section">
-                <div className="ai-pipeline-content">
-                  <div className="ai-pipeline-text">
-                    <h3 className="ai-pipeline-subtitle">AI Pipeline</h3>
-                    <h2 className="ai-pipeline-title">Generating solutions, end-to-end.</h2>
-                    <div className="ai-pipeline-steps">
-                      <div className={`ai-pipeline-step ${activeStep === 0 ? 'active' : ''}`}>
-                        <span className="step-icon">✨</span>
-                        <h4>Analyzing prompt...</h4>
-                        <p>KortexAI determines the subject and context of your issue.</p>
-                      </div>
-                      <div className={`ai-pipeline-step ${activeStep === 1 ? 'active' : ''}`}>
-                        <span className="step-icon">🔧</span>
-                        <h4>Crafting solutions...</h4>
-                        <p>Next, it generates tailored solutions based on the analysis.</p>
-                      </div>
-                      <div className={`ai-pipeline-step ${activeStep === 2 ? 'active' : ''}`}>
-                        <span className="step-icon">🚀</span>
-                        <h4>Review and implement!</h4>
-                        <p>The solution is ready – your turn to put it into action.</p>
-                      </div>
-                    </div>
-                    <div className="get-started-container">
-                      <button className="get-started-btn">Get Started</button>
-                    </div>
-                  </div>
-                  <div className="ai-pipeline-visual">
-                    <div className="ai-orb">
-                      <div className="ai-orb-inner"></div>
-                    </div>
-                    <p className="generating-text">Generating your solution... {generatingProgress}%</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Existing input and output areas */}
               <div className="input-group">
-                <input type="text" placeholder="Enter your issue here..." />
-                <button className="generate-btn">Generate Solution</button>
+                <input 
+                  type="text" 
+                  placeholder="Enter your challenge here..." 
+                  value={userInput}
+                  onChange={(e) => setUserInput(e.target.value)}
+                />
+                <button className="generate-btn" onClick={generateSolution}>Generate Solution</button>
               </div>
               <div className="solution-output">
-                <p>AI-generated solution will appear here...</p>
+                {generatedSolution ? (
+                  <p>{generatedSolution}</p>
+                ) : (
+                  <p>Your AI-generated solution will appear here...</p>
+                )}
               </div>
             </div>
 

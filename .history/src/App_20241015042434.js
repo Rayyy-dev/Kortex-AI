@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, AreaChart, Area, LabelList } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import './App.css';
 
 function FAQItem({ question, answer }) {
@@ -7,7 +7,7 @@ function FAQItem({ question, answer }) {
 
   return (
     <div className={`faq-item ${isActive ? 'active' : ''}`} onClick={() => setIsActive(!isActive)}>
-      <h3>{question}<span className="faq-toggle">{isActive ? '-' : '+'}</span></h3>
+      <h3>{question}<span className="faq-toggle">+</span></h3>
       <div className="faq-answer">
         <p>{answer}</p>
       </div>
@@ -20,15 +20,6 @@ function App() {
   const backgroundRef = useRef(null);
   const mainSectionRef = useRef(null);
   const parallaxRef = useRef(null);
-  const [activeStep, setActiveStep] = useState(0);
-  const [generatingProgress, setGeneratingProgress] = useState(0);
-  const [showBackToTop, setShowBackToTop] = useState(false);
-  const aiPipelineRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
 
   useEffect(() => {
     const background = backgroundRef.current;
@@ -57,80 +48,6 @@ function App() {
     return () => {
       clearInterval(particleInterval);
     };
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowBackToTop(window.scrollY > 300);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setGeneratingProgress((prevProgress) => {
-        if (prevProgress >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        return prevProgress + 1;
-      });
-    }, 50);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveStep(0);
-          const interval = setInterval(() => {
-            setActiveStep((prevStep) => {
-              if (prevStep >= 2) {
-                clearInterval(interval);
-                return 2;
-              }
-              return prevStep + 1;
-            });
-          }, 2000);
-
-          return () => clearInterval(interval);
-        }
-      });
-    }, options);
-
-    if (aiPipelineRef.current) {
-      observer.observe(aiPipelineRef.current);
-    }
-
-    return () => {
-      if (aiPipelineRef.current) {
-        observer.unobserve(aiPipelineRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
   }, []);
 
   const performanceData = [
@@ -178,45 +95,25 @@ function App() {
     }
   ];
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
-  const scrollToSection = (sectionId) => {
-    const section = document.querySelector(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className="App">
       <header className="header">
         <div className="logo">KortexAI</div>
-        <nav className={`nav ${menuOpen ? 'active' : ''}`}>
+        <nav className="nav">
           <ul>
-            {['home', 'ai-systems', 'modules', 'features', 'pricing', 'faq'].map((item) => (
-              <li key={item}>
-                <a href={`#${item}`} onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(`#${item}`);
-                  setMenuOpen(false);
-                }}>
-                  {item.charAt(0).toUpperCase() + item.slice(1).replace('-', ' ')}
-                </a>
-              </li>
-            ))}
+            <li><a href="#home">Home</a></li>
+            <li><a href="#ai-systems">AI Systems</a></li>
+            <li><a href="#modules">Modules</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li className="protection">
+              <a href="#protection">Protection</a>
+              <span className="icon-shield">🛡</span>
+            </li>
           </ul>
         </nav>
         <button className="create-account-btn">Create Account</button>
-        <div className={`menu-toggle ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
       </header>
 
       <section ref={mainSectionRef} className="main-section">
@@ -232,56 +129,41 @@ function App() {
         </div>
       </section>
 
-      <div className="partner-strip">
-        <div className="partner-strip-content">
-          <span>Vercel</span>
-          <span>Loom</span>
-          <span>Cash App</span>
-          <span>Zapier</span>
-          <span>Ramp</span>
-          <span>Raycast</span>
-          <span>OpenAI</span>
-          <span>DeepMind</span>
-          <span>IBM Watson</span>
-          <span>Google AI</span>
-          <span>Microsoft Azure</span>
-          <span>Amazon AWS</span>
-        </div>
-      </div>
-
-      <section className="performance-metrics">
-        <h2>AI Performance Metrics</h2>
-        <div className="graph-container">
-          <ResponsiveContainer width="100%" height={400}>
-            <AreaChart data={performanceData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-              <defs>
-                <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#4a4af0" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#4a4af0" stopOpacity={0}/>
-                </linearGradient>
-              </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
-              <XAxis dataKey="name" stroke="#ffffff" axisLine={false} tickLine={false} />
-              <YAxis stroke="#ffffff" axisLine={false} tickLine={false} />
-              <Tooltip content={<CustomTooltip />} />
-              <Area 
-                type="monotone" 
-                dataKey="value" 
-                stroke="#4a4af0" 
-                fillOpacity={1} 
-                fill="url(#colorValue)"
-                strokeWidth={3}
-                dot={{ r: 6, fill: "#4a4af0", stroke: "#ffffff", strokeWidth: 2 }}
-                activeDot={{ r: 8, fill: "#ffffff", stroke: "#4a4af0", strokeWidth: 2 }}
-              >
-                <LabelList dataKey="value" position="top" fill="#ffffff" />
-              </Area>
-            </AreaChart>
-          </ResponsiveContainer>
-        </div>
-      </section>
-
       <footer className="footer-section">
+        <div className="defi-horizons">
+          <span>Exploring AI Horizons</span>
+        </div>
+        <div className="partners">
+          <div className="partner">Vercel</div>
+          <div className="partner">Loom</div>
+          <div className="partner">Cash App</div>
+          <div className="partner">Zapier</div>
+          <div className="partner">Ramp</div>
+          <div className="partner">Raycast</div>
+        </div>
+
+        <div className="graph-section">
+          <h2 className="graph-title">AI Performance Metrics</h2>
+          <div className="graph-container">
+            <ResponsiveContainer width="100%" height={400}>
+              <LineChart data={performanceData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
+                <XAxis dataKey="name" stroke="#ffffff" axisLine={false} tickLine={false} />
+                <YAxis stroke="#ffffff" axisLine={false} tickLine={false} />
+                <Tooltip content={<CustomTooltip />} />
+                <Line
+                  type="monotone"
+                  dataKey="value"
+                  stroke="#4a4af0"
+                  strokeWidth={3}
+                  dot={{ r: 6, fill: "#4a4af0", stroke: "#ffffff", strokeWidth: 2 }}
+                  activeDot={{ r: 8, fill: "#ffffff", stroke: "#4a4af0", strokeWidth: 2 }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
         <div className="background-section" ref={backgroundRef}>
           <div className="background-content">
             <div className="ai-solution-box">
@@ -295,17 +177,17 @@ function App() {
                     <h3 className="ai-pipeline-subtitle">AI Pipeline</h3>
                     <h2 className="ai-pipeline-title">Generating solutions, end-to-end.</h2>
                     <div className="ai-pipeline-steps">
-                      <div className={`ai-pipeline-step ${activeStep === 0 ? 'active' : ''}`}>
+                      <div className="ai-pipeline-step active">
                         <span className="step-icon">✨</span>
                         <h4>Analyzing prompt...</h4>
                         <p>KortexAI determines the subject and context of your issue.</p>
                       </div>
-                      <div className={`ai-pipeline-step ${activeStep === 1 ? 'active' : ''}`}>
+                      <div className="ai-pipeline-step">
                         <span className="step-icon">🔧</span>
                         <h4>Crafting solutions...</h4>
                         <p>Next, it generates tailored solutions based on the analysis.</p>
                       </div>
-                      <div className={`ai-pipeline-step ${activeStep === 2 ? 'active' : ''}`}>
+                      <div className="ai-pipeline-step">
                         <span className="step-icon">🚀</span>
                         <h4>Review and implement!</h4>
                         <p>The solution is ready – your turn to put it into action.</p>
@@ -319,7 +201,7 @@ function App() {
                     <div className="ai-orb">
                       <div className="ai-orb-inner"></div>
                     </div>
-                    <p className="generating-text">Generating your solution... {generatingProgress}%</p>
+                    <p className="generating-text">Generating your solution... 93%</p>
                   </div>
                 </div>
               </div>
@@ -410,12 +292,6 @@ function App() {
             </button>
           </div>
         </div>
-      )}
-
-      {showBackToTop && (
-        <button className="back-to-top" onClick={scrollToTop}>
-          ↑
-        </button>
       )}
     </div>
   );

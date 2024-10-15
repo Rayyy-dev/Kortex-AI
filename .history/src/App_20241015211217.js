@@ -95,9 +95,9 @@ function App() {
           setActiveStep(0);
           const interval = setInterval(() => {
             setActiveStep((prevStep) => {
-              if (prevStep >= 2) {
+              if (prevStep >= 3) {
                 clearInterval(interval);
-                return 2;
+                return 3;
               }
               return prevStep + 1;
             });
@@ -281,6 +281,65 @@ function App() {
         </div>
       </section>
 
+      <section className="ai-solutions-section">
+        <div className="container">
+          <h2 className="section-title">AI Solutions</h2>
+          <p className="section-subtitle">Harness the power of AI to solve complex problems</p>
+          
+          <div className="ai-solutions-grid">
+            <div className="ai-solution-card">
+              <div className="ai-solution-icon">🧠</div>
+              <h3>Natural Language Processing</h3>
+              <p>Understand and generate human-like text with advanced NLP models.</p>
+            </div>
+            <div className="ai-solution-card">
+              <div className="ai-solution-icon">👁️</div>
+              <h3>Computer Vision</h3>
+              <p>Analyze and interpret visual data with state-of-the-art image recognition.</p>
+            </div>
+            <div className="ai-solution-card">
+              <div className="ai-solution-icon">📊</div>
+              <h3>Predictive Analytics</h3>
+              <p>Forecast trends and make data-driven decisions with machine learning.</p>
+            </div>
+            <div className="ai-solution-card">
+              <div className="ai-solution-icon">🤖</div>
+              <h3>Autonomous Systems</h3>
+              <p>Develop self-learning systems for automation and optimization.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="ai-pipeline-section">
+        <div className="container">
+          <h2 className="section-title">AI Pipeline</h2>
+          <p className="section-subtitle">Our streamlined process for AI-powered solutions</p>
+          
+          <div className="ai-pipeline-steps">
+            <div className={`ai-pipeline-step ${activeStep === 0 ? 'active' : ''}`}>
+              <div className="step-number">1</div>
+              <div className="step-content">
+                <h3>Data Collection & Preprocessing</h3>
+                <p>Gather and clean relevant data to ensure high-quality input for our AI models.</p>
+              </div>
+            </div>
+            <div className={`ai-pipeline-step ${activeStep === 1 ? 'active' : ''}`}>
+              <div className="step-number">2</div>
+              <div className="step-content">
+                <h3>Model Selection & Training</h3>
+                <p>Choose and train the most suitable AI models for your specific use case.</p>
+              </div>
+            </div>
+            <div className={`ai-pipeline-step ${activeStep === 2 ? 'active' : ''}`}>
+              <div className="step-number">3</div>
+              <div className="step-content">
+                <h3>Validation & Optimization</h3>
+                <p>Rigorously test and fine-tune the models to ensure optimal performance.</p>
+              </div>
+            </div>
+            <div className={`ai-pipeline-step ${activeStep === 3 ? 'active' : ''}`}>
+              <div className="step-number">4</div>
       <footer className="footer-section">
         <div className="background-section" ref={backgroundRef}>
           <div className="background-content">

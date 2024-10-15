@@ -6,13 +6,13 @@
 }
 
 :root {
-  --primary-color: #6C63FF;
-  --secondary-color: #4A47B1;
+  --primary-color: #4A4AF0;
+  --secondary-color: #6C63FF;
   --background-color: #0F0F1A;
   --text-color: #FFFFFF;
   --accent-color: #FF6B6B;
-  --gradient-start: rgba(108, 99, 255, 0.1);
-  --gradient-end: rgba(74, 71, 177, 0.05);
+  --gradient-start: rgba(74, 74, 240, 0.1);
+  --gradient-end: rgba(108, 99, 255, 0.05);
 }
 
 body {
@@ -104,7 +104,7 @@ body {
 /* Main Section with Improved Gradient */
 .main-section {
   background-color: var(--background-color);
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -139,15 +139,15 @@ body {
 }
 
 .main-title {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
   color: var(--text-color);
-  text-shadow: 0 0 10px rgba(108, 99, 255, 0.5);
+  text-shadow: 0 0 10px rgba(74, 74, 240, 0.5);
 }
 
 .main-subtitle {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -202,7 +202,7 @@ body {
 }
 
 .main-title {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
   color: #ffffff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
@@ -223,8 +223,8 @@ body {
 
 .open-app-btn,
 .discover-more-btn {
-  padding: 0.6rem 1.2rem;
-  font-size: 0.9rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
   border: none;
   border-radius: 25px;
   cursor: pointer;
@@ -232,24 +232,24 @@ body {
 }
 
 .open-app-btn {
-  background-color: #4a4af0;
-  color: #ffffff;
+  background-color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .open-app-btn:hover {
+  background-color: var(--secondary-color);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
 }
 
 .discover-more-btn {
   background-color: transparent;
-  color: #ffffff;
-  border: 1px solid #ffffff;
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
 }
 
 .discover-more-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
 }
 
 /* Footer Section Styling */
@@ -518,23 +518,23 @@ body {
 .ai-solution-box {
   background-color: rgba(26, 26, 38, 0.95);
   border-radius: 20px;
-  padding: 40px;
+  padding: 3rem;
   width: 100%;
+  max-width: 1000px;
+  margin: 4rem auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  color: var(--text-color);
-  margin: 0 auto;
 }
 
 .ai-solution-box h2 {
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
   color: var(--text-color);
   text-align: center;
 }
 
 .ai-solution-box > p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
   text-align: center;
   color: rgba(255, 255, 255, 0.8);
 }
@@ -542,42 +542,31 @@ body {
 /* AI Pipeline Section */
 .ai-pipeline-section {
   background-color: rgba(26, 26, 38, 0.8);
-  padding: 30px;
+  padding: 2rem;
   border-radius: 15px;
-  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(74, 74, 240, 0.2);
   backdrop-filter: blur(10px);
-  margin: 30px auto;
+  margin: 2rem auto;
   max-width: 900px;
   width: 95%;
-  position: relative;
-  overflow: hidden;
   transition: all 0.3s ease;
-}
-
-.ai-pipeline-section:hover {
-  box-shadow: 0 12px 32px rgba(108, 99, 255, 0.3);
-  transform: translateY(-3px);
 }
 
 .ai-pipeline-content {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  gap: 30px;
-  position: relative;
-  z-index: 1;
+  gap: 2rem;
 }
 
 .ai-pipeline-text {
   flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 .ai-pipeline-subtitle {
   color: var(--primary-color);
   font-size: 0.9rem;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-weight: 600;
@@ -586,20 +575,20 @@ body {
 .ai-pipeline-title {
   color: var(--text-color);
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
   font-weight: 700;
 }
 
 .ai-pipeline-steps {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1rem;
 }
 
 .ai-pipeline-step {
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
-  padding: 15px;
+  padding: 1rem;
   display: flex;
   align-items: center;
   transition: all 0.3s ease;
@@ -612,14 +601,14 @@ body {
 
 .step-icon {
   font-size: 1.5rem;
-  margin-right: 15px;
+  margin-right: 1rem;
   color: var(--primary-color);
 }
 
 .ai-pipeline-step h4 {
   color: var(--text-color);
-  font-size: 1rem;
-  margin-bottom: 5px;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
 }
 
 .ai-pipeline-step p {
@@ -627,19 +616,16 @@ body {
   font-size: 0.9rem;
 }
 
-.get-started-container {
-  margin-top: 20px;
-}
-
 .get-started-btn {
   background-color: var(--primary-color);
   color: var(--text-color);
   border: none;
-  padding: 10px 20px;
-  font-size: 0.9rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-top: 1.5rem;
 }
 
 .get-started-btn:hover {
@@ -664,7 +650,7 @@ body {
   justify-content: center;
   align-items: center;
   animation: rotate 10s linear infinite;
-  box-shadow: 0 0 30px rgba(108, 99, 255, 0.4);
+  box-shadow: 0 0 30px rgba(74, 74, 240, 0.4);
 }
 
 .ai-orb-inner {
@@ -682,138 +668,10 @@ body {
 .generating-text {
   color: var(--text-color);
   font-size: 0.9rem;
-  margin-top: 15px;
+  margin-top: 1rem;
   text-align: center;
 }
 
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (max-width: 768px) {
-  .ai-pipeline-content {
-    flex-direction: column;
-  }
-
-  .ai-pipeline-visual {
-    margin-top: 20px;
-  }
-}
-
-/* Remove these styles */
-.input-group,
-.generate-btn,
-.solution-output {
-  display: none;
-}
-
-/* Add these new styles to your existing CSS */
-
-.footer-links {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 3rem;
-  padding-top: 3rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-column {
-  flex: 1;
-  min-width: 200px;
-  margin-bottom: 2rem;
-}
-
-.footer-column h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: #ffffff;
-}
-
-.footer-column ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.footer-column ul li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-column ul li a {
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-column ul li a:hover {
-  color: #ffffff;
-}
-
-.beta-tag, .new-tag {
-  font-size: 0.7rem;
-  padding: 0.2em 0.4em;
-  border-radius: 0.3em;
-  margin-left: 0.5em;
-  text-transform: uppercase;
-}
-
-.beta-tag {
-  background-color: #4a4af0;
-  color: #ffffff;
-}
-
-.new-tag {
-  background-color: #00ff00;
-  color: #000000;
-}
-
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-bottom p {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.awards {
-  display: flex;
-  align-items: center;
-}
-
-.award-text {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  padding: 0.5em 1em;
-  border-radius: 1em;
-  font-size: 0.8rem;
-}
-
-@media (max-width: 768px) {
-  .footer-links {
-    flex-direction: column;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-}
 /* FAQ Section Styles */
 .faq-section {
   margin-top: 4rem;
@@ -875,7 +733,7 @@ body {
 }
 
 .faq-item:hover {
-  background-color: rgba(108, 99, 255, 0.1);
+  background-color: rgba(74, 74, 240, 0.1);
 }
 
 .faq-item.active .faq-answer {
@@ -946,16 +804,22 @@ body {
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
+    align-items: flex-start;
     padding: 1rem;
   }
 
   .nav {
+    width: 100%;
     margin-top: 1rem;
   }
 
   .nav ul {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+  }
+
+  .nav ul li {
+    margin: 0.5rem 0;
   }
 
   .create-account-btn {
@@ -974,13 +838,14 @@ body {
     margin-top: 2rem;
   }
 
-  .footer-links {
+  .footer-content {
     flex-direction: column;
   }
 
   .footer-bottom {
     flex-direction: column;
-    text-align: center;
+    align-items: flex-start;
+    gap: 1rem;
   }
 }
 

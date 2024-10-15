@@ -6,13 +6,15 @@
 }
 
 :root {
-  --primary-color: #6C63FF;
-  --secondary-color: #4A47B1;
-  --background-color: #0F0F1A;
-  --text-color: #FFFFFF;
+  --primary-color: #4a4af0;
+  --secondary-color: #6c63ff;
+  --background-color: #0f0f1a;
+  --text-color: #ffffff;
   --accent-color: #FF6B6B;
   --gradient-start: rgba(108, 99, 255, 0.1);
   --gradient-end: rgba(74, 71, 177, 0.05);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --hover-color: rgba(74, 74, 240, 0.1);
 }
 
 body {

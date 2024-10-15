@@ -6,11 +6,13 @@
 }
 
 :root {
-  --primary-color: #6C63FF;
-  --secondary-color: #4A47B1;
+  --primary-color: #4A4AF0;
+  --secondary-color: #6C63FF;
   --background-color: #0F0F1A;
   --text-color: #FFFFFF;
   --accent-color: #FF6B6B;
+  --gradient-start: rgba(74, 74, 240, 0.1);
+  --gradient-end: rgba(108, 99, 255, 0.05);
   --gradient-start: rgba(108, 99, 255, 0.1);
   --gradient-end: rgba(74, 71, 177, 0.05);
 }

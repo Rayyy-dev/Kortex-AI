@@ -288,8 +288,32 @@ function App() {
               <h2>AI Solutions</h2>
               <p>Describe your issue and let our AI generate a solution for you!</p>
               
-              {/* New AI Pipeline Section */}
               <div className="ai-pipeline-section">
+                <h3 className="ai-pipeline-subtitle">AI Pipeline</h3>
+                <h2 className="ai-pipeline-title">Generating solutions, end-to-end.</h2>
+                <div className="ai-pipeline-steps">
+                  {[
+                    { icon: '✨', title: 'Analyzing prompt', description: 'KortexAI determines the subject and context of your issue.' },
+                    { icon: '🔧', title: 'Crafting solutions', description: 'Next, it generates tailored solutions based on the analysis.' },
+                    { icon: '🚀', title: 'Review and implement', description: 'The solution is ready – your turn to put it into action.' }
+                  ].map((step, index) => (
+                    <div key={index} className={`ai-pipeline-step ${activeStep === index ? 'active' : ''}`}>
+                      <span className="step-icon">{step.icon}</span>
+                      <div className="step-content">
+                        <h4>{step.title}</h4>
+                        <p>{step.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="input-group">
+                <input type="text" placeholder="Enter your issue here..." />
+                <button className="generate-btn">Generate Solution</button>
+              </div>
+              <div className="solution-output">
+                <p>AI-generated solution will appear here...</p>
                 <div className="ai-pipeline-content">
                   <div className="ai-pipeline-text">
                     <h3 className="ai-pipeline-subtitle">AI Pipeline</h3>

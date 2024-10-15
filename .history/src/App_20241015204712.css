@@ -223,10 +223,10 @@ body {
 
 .open-app-btn,
 .discover-more-btn {
-  padding: 0.6rem 1.2rem;
-  font-size: 0.9rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
   border: none;
-  border-radius: 25px;
+  border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -542,12 +542,12 @@ body {
 /* AI Pipeline Section */
 .ai-pipeline-section {
   background-color: rgba(26, 26, 38, 0.8);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.2);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(108, 99, 255, 0.3);
   backdrop-filter: blur(10px);
-  margin: 30px auto;
-  max-width: 900px;
+  margin: 40px auto;
+  max-width: 1000px;
   width: 95%;
   position: relative;
   overflow: hidden;
@@ -555,15 +555,15 @@ body {
 }
 
 .ai-pipeline-section:hover {
-  box-shadow: 0 12px 32px rgba(108, 99, 255, 0.3);
-  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(108, 99, 255, 0.4);
+  transform: translateY(-5px);
 }
 
 .ai-pipeline-content {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  gap: 30px;
+  gap: 40px;
   position: relative;
   z-index: 1;
 }
@@ -576,132 +576,199 @@ body {
 
 .ai-pipeline-subtitle {
   color: var(--primary-color);
-  font-size: 0.9rem;
-  margin-bottom: 8px;
+  font-size: 1rem;
+  margin-bottom: 10px;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   font-weight: 600;
 }
 
 .ai-pipeline-title {
   color: var(--text-color);
-  font-size: 2rem;
-  margin-bottom: 20px;
-  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  line-height: 1.2;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(108, 99, 255, 0.3);
 }
 
 .ai-pipeline-steps {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-bottom: 25px;
 }
 
 .ai-pipeline-step {
   background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
   padding: 15px;
-  display: flex;
-  align-items: center;
+  border-radius: 12px;
   transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
 }
 
 .ai-pipeline-step:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(108, 99, 255, 0.1);
   transform: translateX(5px);
+  border-color: rgba(108, 99, 255, 0.3);
+}
+
+.ai-pipeline-step.active {
+  background-color: rgba(108, 99, 255, 0.15);
+  transform: translateX(10px);
+  border-color: rgba(108, 99, 255, 0.5);
 }
 
 .step-icon {
   font-size: 1.5rem;
-  margin-right: 15px;
+  margin-right: 12px;
+  vertical-align: middle;
   color: var(--primary-color);
 }
 
 .ai-pipeline-step h4 {
   color: var(--text-color);
-  font-size: 1rem;
-  margin-bottom: 5px;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .ai-pipeline-step p {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 0.9rem;
-}
-
-.get-started-container {
-  margin-top: 20px;
-}
-
-.get-started-btn {
-  background-color: var(--primary-color);
-  color: var(--text-color);
-  border: none;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  border-radius: 25px;
-  cursor: pointer;
+  margin-left: 35px;
+  line-height: 1.5;
   transition: all 0.3s ease;
 }
 
-.get-started-btn:hover {
-  background-color: var(--secondary-color);
-  transform: translateY(-2px);
-}
-
 .ai-pipeline-visual {
-  flex: 0 0 200px;
+  flex: 0 0 280px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  background-color: rgba(15, 15, 26, 0.5);
+  border-radius: 12px;
+  padding: 15px;
 }
 
 .ai-orb {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   background: conic-gradient(from 0deg, var(--primary-color), var(--secondary-color), var(--primary-color));
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   animation: rotate 10s linear infinite;
-  box-shadow: 0 0 30px rgba(108, 99, 255, 0.4);
+  box-shadow: 0 0 40px rgba(108, 99, 255, 0.5);
+  position: relative;
+}
+
+.ai-orb::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: inherit;
+  border-radius: inherit;
+  filter: blur(20px);
+  opacity: 0.7;
+  z-index: -1;
 }
 
 .ai-orb-inner {
   width: 80%;
   height: 80%;
-  background-color: rgba(26, 26, 38, 0.8);
+  background-color: var(--background-color);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--primary-color);
+  text-shadow: 0 0 8px rgba(108, 99, 255, 0.5);
 }
 
 .generating-text {
   color: var(--text-color);
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin-top: 15px;
   text-align: center;
+  font-weight: bold;
+  text-shadow: 0 0 4px rgba(108, 99, 255, 0.5);
 }
 
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Get Started Button Container */
+.get-started-container {
+  margin-top: auto; /* Push the button to the bottom */
+  text-align: left; /* Align with the steps */
 }
 
+/* Get Started Button Styles */
+.get-started-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.get-started-btn::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.get-started-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(108, 99, 255, 0.5);
+}
+
+.get-started-btn:hover::before {
+  opacity: 1;
+}
+
+.get-started-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(108, 99, 255, 0.3);
+}
+
+/* Media query for responsiveness */
 @media (max-width: 768px) {
   .ai-pipeline-content {
     flex-direction: column;
   }
 
   .ai-pipeline-visual {
-    margin-top: 20px;
+    margin-top: 40px;
+  }
+
+  .get-started-container {
+    text-align: center; /* Center the button on smaller screens */
+    margin-top: 30px; /* Add some space above the button */
   }
 }
 
@@ -1017,90 +1084,64 @@ body {
 
 /* Performance Metrics Section */
 .performance-metrics {
-  background-color: #0F0F1A;
+  background-color: #0a0a0a;
   padding: 4rem 2rem;
   position: relative;
-  border-radius: 12px;
-  margin: 4rem auto;
-  max-width: 1200px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.performance-metrics::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: radial-gradient(circle at center, rgba(74, 74, 240, 0.1) 0%, transparent 70%);
+  animation: pulse 10s infinite alternate;
 }
 
 .performance-metrics h2 {
   text-align: center;
-  font-size: 2.2rem;
-  margin-bottom: 2.5rem;
-  color: #FFFFFF;
-  font-weight: 600;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  position: relative;
 }
 
 .graph-container {
-  background: #1A1A2E;
-  border-radius: 8px;
-  padding: 30px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  background: rgba(26, 26, 26, 0.4);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 1s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .recharts-wrapper {
-  margin: 0 auto;
+  backdrop-filter: blur(5px);
 }
 
 .recharts-cartesian-grid-horizontal line,
 .recharts-cartesian-grid-vertical line {
-  stroke: #2A2A3E;
+  stroke: rgba(255, 255, 255, 0.1);
 }
 
 .recharts-text {
-  fill: #A0A0B0;
+  fill: rgba(255, 255, 255, 0.8);
   font-size: 12px;
-  font-weight: 500;
-}
-
-.recharts-line {
-  stroke-width: 2;
-}
-
-.recharts-line-curve {
-  stroke: #6C63FF;
 }
 
 .recharts-area {
-  fill: url(#colorGradient);
+  animation: drawChart 1.5s ease-out forwards;
 }
 
 .recharts-tooltip-wrapper {
-  background-color: #2A2A3E !important;
-  border: 1px solid #3A3A4E !important;
-  border-radius: 4px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.recharts-tooltip-label {
-  color: #FFFFFF !important;
-  font-weight: 600;
-}
-
-.recharts-tooltip-item {
-  color: #A0A0B0 !important;
-}
-
-.recharts-active-dot {
-  r: 6;
-  fill: #6C63FF;
-}
-
-@media (max-width: 768px) {
-  .performance-metrics {
-    padding: 3rem 1rem;
-  }
-
-  .performance-metrics h2 {
-    font-size: 1.8rem;
-  }
-
-  .graph-container {
-    padding: 20px;
-  }
+  background-color: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');

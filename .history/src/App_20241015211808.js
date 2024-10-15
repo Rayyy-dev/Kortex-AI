@@ -285,11 +285,33 @@ function App() {
         <div className="background-section" ref={backgroundRef}>
           <div className="background-content">
             <div className="ai-solution-box">
-              <h2>AI Solutions</h2>
-              <p>Describe your issue and let our AI generate a solution for you!</p>
+              <h2>AI-Powered Solutions</h2>
+              <p>Leverage cutting-edge AI to solve complex problems efficiently</p>
               
-              {/* New AI Pipeline Section */}
               <div className="ai-pipeline-section">
+                <h3 className="ai-pipeline-subtitle">KortexAI Pipeline</h3>
+                <h2 className="ai-pipeline-title">Intelligent Problem-Solving Process</h2>
+                <div className="ai-pipeline-steps">
+                  {[
+                    { icon: '🔍', title: 'Analysis', description: 'KortexAI analyzes the context and parameters of your issue.' },
+                    { icon: '💡', title: 'Solution Generation', description: 'Our AI crafts tailored solutions based on comprehensive analysis.' },
+                    { icon: '⚙️', title: 'Optimization', description: 'Solutions are refined and optimized for maximum efficiency.' },
+                    { icon: '🚀', title: 'Implementation', description: 'Seamlessly integrate the AI-generated solution into your workflow.' }
+                  ].map((step, index) => (
+                    <div key={index} className={`ai-pipeline-step ${activeStep === index ? 'active' : ''}`}>
+                      <span className="step-icon">{step.icon}</span>
+                      <div className="step-content">
+                        <h4>{step.title}</h4>
+                        <p>{step.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="ai-interaction">
+                <div className="input-group">
+                  <input type="text" placeholder="Describe your challenge here..." />
                 <div className="ai-pipeline-content">
                   <div className="ai-pipeline-text">
                     <h3 className="ai-pipeline-subtitle">AI Pipeline</h3>

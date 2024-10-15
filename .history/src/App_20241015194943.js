@@ -196,14 +196,13 @@ function App() {
     <div className="App">
       <header className="header">
         <div className="logo">KortexAI</div>
-        <nav className={`nav ${menuOpen ? 'active' : ''}`}>
+        <nav className="nav">
           <ul>
             {['home', 'ai-systems', 'modules', 'features', 'pricing', 'faq'].map((item) => (
               <li key={item}>
                 <a href={`#${item}`} onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(`#${item}`);
-                  setMenuOpen(false);
                 }}>
                   {item.charAt(0).toUpperCase() + item.slice(1).replace('-', ' ')}
                 </a>
@@ -212,11 +211,6 @@ function App() {
           </ul>
         </nav>
         <button className="create-account-btn">Create Account</button>
-        <div className={`menu-toggle ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
       </header>
 
       <section ref={mainSectionRef} className="main-section">

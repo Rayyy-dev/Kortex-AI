@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, AreaChart, Area, LabelList } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import './App.css';
 
 function FAQItem({ question, answer }) {
@@ -24,11 +24,6 @@ function App() {
   const [generatingProgress, setGeneratingProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const aiPipelineRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
 
   useEffect(() => {
     const background = backgroundRef.current;
@@ -119,20 +114,6 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
   const performanceData = [
     { name: 'Accuracy', value: 70 },
     { name: 'Speed', value: 85 },
@@ -195,15 +176,14 @@ function App() {
   return (
     <div className="App">
       <header className="header">
-        <div className="logo">KortexAI</div>
-        <nav className={`nav ${menuOpen ? 'active' : ''}`}>
+        <a href="#" className="logo">KortexAI</a>
+        <nav className="nav">
           <ul>
             {['home', 'ai-systems', 'modules', 'features', 'pricing', 'faq'].map((item) => (
               <li key={item}>
                 <a href={`#${item}`} onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(`#${item}`);
-                  setMenuOpen(false);
                 }}>
                   {item.charAt(0).toUpperCase() + item.slice(1).replace('-', ' ')}
                 </a>
@@ -212,11 +192,6 @@ function App() {
           </ul>
         </nav>
         <button className="create-account-btn">Create Account</button>
-        <div className={`menu-toggle ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
       </header>
 
       <section ref={mainSectionRef} className="main-section">
@@ -240,48 +215,44 @@ function App() {
           <span>Zapier</span>
           <span>Ramp</span>
           <span>Raycast</span>
-          <span>OpenAI</span>
-          <span>DeepMind</span>
-          <span>IBM Watson</span>
-          <span>Google AI</span>
-          <span>Microsoft Azure</span>
-          <span>Amazon AWS</span>
         </div>
       </div>
 
-      <section className="performance-metrics">
-        <h2>AI Performance Metrics</h2>
-        <div className="graph-container">
-          <ResponsiveContainer width="100%" height={400}>
-            <AreaChart data={performanceData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-              <defs>
-                <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#4a4af0" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#4a4af0" stopOpacity={0}/>
-                </linearGradient>
-              </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
-              <XAxis dataKey="name" stroke="#ffffff" axisLine={false} tickLine={false} />
-              <YAxis stroke="#ffffff" axisLine={false} tickLine={false} />
-              <Tooltip content={<CustomTooltip />} />
-              <Area 
-                type="monotone" 
-                dataKey="value" 
-                stroke="#4a4af0" 
-                fillOpacity={1} 
-                fill="url(#colorValue)"
-                strokeWidth={3}
-                dot={{ r: 6, fill: "#4a4af0", stroke: "#ffffff", strokeWidth: 2 }}
-                activeDot={{ r: 8, fill: "#ffffff", stroke: "#4a4af0", strokeWidth: 2 }}
-              >
-                <LabelList dataKey="value" position="top" fill="#ffffff" />
-              </Area>
-            </AreaChart>
-          </ResponsiveContainer>
-        </div>
-      </section>
-
       <footer className="footer-section">
+        <div className="defi-horizons">
+          <span>Exploring AI Horizons</span>
+        </div>
+        <div className="partners">
+          <div className="partner">Vercel</div>
+          <div className="partner">Loom</div>
+          <div className="partner">Cash App</div>
+          <div className="partner">Zapier</div>
+          <div className="partner">Ramp</div>
+          <div className="partner">Raycast</div>
+        </div>
+
+        <div className="graph-section">
+          <h2 className="graph-title">AI Performance Metrics</h2>
+          <div className="graph-container">
+            <ResponsiveContainer width="100%" height={400}>
+              <LineChart data={performanceData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
+                <XAxis dataKey="name" stroke="#ffffff" axisLine={false} tickLine={false} />
+                <YAxis stroke="#ffffff" axisLine={false} tickLine={false} />
+                <Tooltip content={<CustomTooltip />} />
+                <Line
+                  type="monotone"
+                  dataKey="value"
+                  stroke="#4a4af0"
+                  strokeWidth={3}
+                  dot={{ r: 6, fill: "#4a4af0", stroke: "#ffffff", strokeWidth: 2 }}
+                  activeDot={{ r: 8, fill: "#ffffff", stroke: "#4a4af0", strokeWidth: 2 }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
         <div className="background-section" ref={backgroundRef}>
           <div className="background-content">
             <div className="ai-solution-box">

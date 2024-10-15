@@ -26,10 +26,6 @@ function App() {
   const aiPipelineRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
   useEffect(() => {
     const background = backgroundRef.current;
     if (!background) return;
@@ -133,6 +129,17 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const performanceData = [
     { name: 'Accuracy', value: 70 },
     { name: 'Speed', value: 85 },
@@ -192,11 +199,15 @@ function App() {
     }
   };
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <div className="App">
       <header className="header">
         <div className="logo">KortexAI</div>
-        <nav className={`nav ${menuOpen ? 'active' : ''}`}>
+        <div className={`nav ${menuOpen ? 'active' : ''}`}>
           <ul>
             {['home', 'ai-systems', 'modules', 'features', 'pricing', 'faq'].map((item) => (
               <li key={item}>
@@ -210,9 +221,9 @@ function App() {
               </li>
             ))}
           </ul>
-        </nav>
-        <button className="create-account-btn">Create Account</button>
-        <div className={`menu-toggle ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+          <button className="create-account-btn">Create Account</button>
+        </div>
+        <div className="menu-toggle" onClick={toggleMenu}>
           <span></span>
           <span></span>
           <span></span>

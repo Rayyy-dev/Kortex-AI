@@ -24,11 +24,15 @@ function App() {
   const [generatingProgress, setGeneratingProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const aiPipelineRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const [performanceData, setPerformanceData] = useState([
+    { name: 'Jan', value: 4000 },
+    { name: 'Feb', value: 3000 },
+    { name: 'Mar', value: 5000 },
+    { name: 'Apr', value: 2780 },
+    { name: 'May', value: 1890 },
+    { name: 'Jun', value: 2390 },
+    { name: 'Jul', value: 3490 },
+  ]);
 
   useEffect(() => {
     const background = backgroundRef.current;
@@ -69,17 +73,24 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setGeneratingProgress((prevProgress) => {
-        if (prevProgress >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        return prevProgress + 1;
-      });
-    }, 50);
+    const delay = setTimeout(() => {
+      const interval = setInterval(() => {
+        setPerformanceData(prevData => {
+          const newData = [...prevData];
+          const lastValue = newData[newData.length - 1].value;
+          const newValue = Math.max(0, Math.min(100, lastValue + (Math.random() * 10 - 5)));
+          newData.push({ name: `Day ${(newData.length % 7) + 1}`, value: newValue });
+          if (newData.length > 7) newData.shift();
+          return newData;
+        });
+      }, 2000);
 
-    return () => clearInterval(interval);
+      return () => {
+        clearInterval(interval);
+      };
+    }, 5000); // 5-second delay before starting the loop
+
+    return () => clearTimeout(delay);
   }, []);
 
   useEffect(() => {
@@ -119,32 +130,11 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
-  const performanceData = [
-    { name: 'Accuracy', value: 70 },
-    { name: 'Speed', value: 85 },
-    { name: 'Efficiency', value: 60 },
-    { name: 'Reliability', value: 90 }
-  ];
-
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
         <div className="custom-tooltip">
-          <p className="label">{`${label}: ${payload[0].value}%`}</p>
+          <p className="label">{`${label} : ${payload[0].value}`}</p>
         </div>
       );
     }
@@ -196,14 +186,13 @@ function App() {
     <div className="App">
       <header className="header">
         <div className="logo">KortexAI</div>
-        <nav className={`nav ${menuOpen ? 'active' : ''}`}>
+        <nav className="nav">
           <ul>
             {['home', 'ai-systems', 'modules', 'features', 'pricing', 'faq'].map((item) => (
               <li key={item}>
                 <a href={`#${item}`} onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(`#${item}`);
-                  setMenuOpen(false);
                 }}>
                   {item.charAt(0).toUpperCase() + item.slice(1).replace('-', ' ')}
                 </a>
@@ -212,11 +201,6 @@ function App() {
           </ul>
         </nav>
         <button className="create-account-btn">Create Account</button>
-        <div className={`menu-toggle ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
       </header>
 
       <section ref={mainSectionRef} className="main-section">
@@ -250,34 +234,61 @@ function App() {
       </div>
 
       <section className="performance-metrics">
-        <h2>AI Performance Metrics</h2>
-        <div className="graph-container">
-          <ResponsiveContainer width="100%" height={400}>
-            <AreaChart data={performanceData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-              <defs>
-                <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#4a4af0" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#4a4af0" stopOpacity={0}/>
-                </linearGradient>
-              </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
-              <XAxis dataKey="name" stroke="#ffffff" axisLine={false} tickLine={false} />
-              <YAxis stroke="#ffffff" axisLine={false} tickLine={false} />
-              <Tooltip content={<CustomTooltip />} />
-              <Area 
-                type="monotone" 
-                dataKey="value" 
-                stroke="#4a4af0" 
-                fillOpacity={1} 
-                fill="url(#colorValue)"
-                strokeWidth={3}
-                dot={{ r: 6, fill: "#4a4af0", stroke: "#ffffff", strokeWidth: 2 }}
-                activeDot={{ r: 8, fill: "#ffffff", stroke: "#4a4af0", strokeWidth: 2 }}
+        <div className="performance-container">
+          <h2 className="performance-title">AI Performance Metrics</h2>
+          <p className="performance-subtitle">Tracking our AI's growth and efficiency over time</p>
+          <div className="chart-container">
+            <ResponsiveContainer width="100%" height={400}>
+              <AreaChart
+                data={performanceData}
+                margin={{
+                  top: 10,
+                  right: 30,
+                  left: 0,
+                  bottom: 0,
+                }}
               >
-                <LabelList dataKey="value" position="top" fill="#ffffff" />
-              </Area>
-            </AreaChart>
-          </ResponsiveContainer>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
+                <XAxis 
+                  dataKey="name" 
+                  stroke="#8884d8"
+                  tick={{ fill: '#8884d8' }}
+                />
+                <YAxis 
+                  stroke="#8884d8"
+                  tick={{ fill: '#8884d8' }}
+                />
+                <Tooltip content={<CustomTooltip />} />
+                <defs>
+                  <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <Area 
+                  type="monotone" 
+                  dataKey="value" 
+                  stroke="#8884d8" 
+                  fillOpacity={1} 
+                  fill="url(#colorValue)" 
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="performance-stats">
+            <div className="stat-item">
+              <h3>Total Processed</h3>
+              <p>1,234,567</p>
+            </div>
+            <div className="stat-item">
+              <h3>Accuracy Rate</h3>
+              <p>99.9%</p>
+            </div>
+            <div className="stat-item">
+              <h3>Response Time</h3>
+              <p>0.05s</p>
+            </div>
+          </div>
         </div>
       </section>
 

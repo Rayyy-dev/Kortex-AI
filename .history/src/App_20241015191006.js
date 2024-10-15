@@ -24,11 +24,15 @@ function App() {
   const [generatingProgress, setGeneratingProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const aiPipelineRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const [performanceData, setPerformanceData] = useState([
+    { name: 'Day 1', value: 70 },
+    { name: 'Day 2', value: 85 },
+    { name: 'Day 3', value: 60 },
+    { name: 'Day 4', value: 90 },
+    { name: 'Day 5', value: 75 },
+    { name: 'Day 6', value: 80 },
+    { name: 'Day 7', value: 95 }
+  ]);
 
   useEffect(() => {
     const background = backgroundRef.current;
@@ -69,17 +73,24 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setGeneratingProgress((prevProgress) => {
-        if (prevProgress >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        return prevProgress + 1;
-      });
-    }, 50);
+    const delay = setTimeout(() => {
+      const interval = setInterval(() => {
+        setPerformanceData(prevData => {
+          const newData = [...prevData];
+          const lastValue = newData[newData.length - 1].value;
+          const newValue = Math.max(0, Math.min(100, lastValue + (Math.random() * 10 - 5)));
+          newData.push({ name: `Day ${(newData.length % 7) + 1}`, value: newValue });
+          if (newData.length > 7) newData.shift();
+          return newData;
+        });
+      }, 2000);
 
-    return () => clearInterval(interval);
+      return () => {
+        clearInterval(interval);
+      };
+    }, 5000); // 5-second delay before starting the loop
+
+    return () => clearTimeout(delay);
   }, []);
 
   useEffect(() => {
@@ -118,27 +129,6 @@ function App() {
       }
     };
   }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
-  const performanceData = [
-    { name: 'Accuracy', value: 70 },
-    { name: 'Speed', value: 85 },
-    { name: 'Efficiency', value: 60 },
-    { name: 'Reliability', value: 90 }
-  ];
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -196,14 +186,13 @@ function App() {
     <div className="App">
       <header className="header">
         <div className="logo">KortexAI</div>
-        <nav className={`nav ${menuOpen ? 'active' : ''}`}>
+        <nav className="nav">
           <ul>
             {['home', 'ai-systems', 'modules', 'features', 'pricing', 'faq'].map((item) => (
               <li key={item}>
                 <a href={`#${item}`} onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(`#${item}`);
-                  setMenuOpen(false);
                 }}>
                   {item.charAt(0).toUpperCase() + item.slice(1).replace('-', ' ')}
                 </a>
@@ -212,11 +201,6 @@ function App() {
           </ul>
         </nav>
         <button className="create-account-btn">Create Account</button>
-        <div className={`menu-toggle ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
       </header>
 
       <section ref={mainSectionRef} className="main-section">

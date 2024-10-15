@@ -24,11 +24,10 @@ function App() {
   const [generatingProgress, setGeneratingProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const aiPipelineRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const [performanceData, setPerformanceData] = useState([
+    { name: 'Accuracy', value: 70 },
+    { name: 'Speed', value: 85 },
+    { name: 'Efficiency', value: 60 },
 
   useEffect(() => {
     const background = backgroundRef.current;
@@ -119,20 +118,6 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
   const performanceData = [
     { name: 'Accuracy', value: 70 },
     { name: 'Speed', value: 85 },
@@ -196,14 +181,13 @@ function App() {
     <div className="App">
       <header className="header">
         <div className="logo">KortexAI</div>
-        <nav className={`nav ${menuOpen ? 'active' : ''}`}>
+        <nav className="nav">
           <ul>
             {['home', 'ai-systems', 'modules', 'features', 'pricing', 'faq'].map((item) => (
               <li key={item}>
                 <a href={`#${item}`} onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(`#${item}`);
-                  setMenuOpen(false);
                 }}>
                   {item.charAt(0).toUpperCase() + item.slice(1).replace('-', ' ')}
                 </a>
@@ -212,11 +196,6 @@ function App() {
           </ul>
         </nav>
         <button className="create-account-btn">Create Account</button>
-        <div className={`menu-toggle ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
       </header>
 
       <section ref={mainSectionRef} className="main-section">
@@ -260,7 +239,7 @@ function App() {
                   <stop offset="95%" stopColor="#4a4af0" stopOpacity={0}/>
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
               <XAxis dataKey="name" stroke="#ffffff" axisLine={false} tickLine={false} />
               <YAxis stroke="#ffffff" axisLine={false} tickLine={false} />
               <Tooltip content={<CustomTooltip />} />
@@ -271,8 +250,6 @@ function App() {
                 fillOpacity={1} 
                 fill="url(#colorValue)"
                 strokeWidth={3}
-                dot={{ r: 6, fill: "#4a4af0", stroke: "#ffffff", strokeWidth: 2 }}
-                activeDot={{ r: 8, fill: "#ffffff", stroke: "#4a4af0", strokeWidth: 2 }}
               >
                 <LabelList dataKey="value" position="top" fill="#ffffff" />
               </Area>

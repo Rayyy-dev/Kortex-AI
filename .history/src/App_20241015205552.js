@@ -297,23 +297,27 @@ function App() {
                     <div className="ai-pipeline-steps">
                       <div className={`ai-pipeline-step ${activeStep === 0 ? 'active' : ''}`}>
                         <span className="step-icon">✨</span>
-                        <h4>Analyzing prompt...</h4>
-                        <p>KortexAI determines the subject and context of your issue.</p>
+                        <div className="step-content">
+                          <h4>Analyzing prompt</h4>
+                          <p>KortexAI determines the subject and context of your issue.</p>
+                        </div>
                       </div>
                       <div className={`ai-pipeline-step ${activeStep === 1 ? 'active' : ''}`}>
                         <span className="step-icon">🔧</span>
-                        <h4>Crafting solutions...</h4>
-                        <p>Next, it generates tailored solutions based on the analysis.</p>
+                        <div className="step-content">
+                          <h4>Crafting solutions</h4>
+                          <p>Next, it generates tailored solutions based on the analysis.</p>
+                        </div>
                       </div>
                       <div className={`ai-pipeline-step ${activeStep === 2 ? 'active' : ''}`}>
                         <span className="step-icon">🚀</span>
-                        <h4>Review and implement!</h4>
-                        <p>The solution is ready – your turn to put it into action.</p>
+                        <div className="step-content">
+                          <h4>Review and implement</h4>
+                          <p>The solution is ready – your turn to put it into action.</p>
+                        </div>
                       </div>
                     </div>
-                    <div className="get-started-container">
-                      <button className="get-started-btn">Get Started</button>
-                    </div>
+                    <button className="get-started-btn">Get Started</button>
                   </div>
                   <div className="ai-pipeline-visual">
                     <div className="ai-orb">

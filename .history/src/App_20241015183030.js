@@ -24,11 +24,15 @@ function App() {
   const [generatingProgress, setGeneratingProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const aiPipelineRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const [performanceData, setPerformanceData] = useState([
+    { name: 'Day 1', value: 70 },
+    { name: 'Day 2', value: 72 },
+    { name: 'Day 3', value: 75 },
+    { name: 'Day 4', value: 78 },
+    { name: 'Day 5', value: 82 },
+    { name: 'Day 6', value: 87 },
+    { name: 'Day 7', value: 93 }
+  ]);
 
   useEffect(() => {
     const background = backgroundRef.current;
@@ -69,17 +73,35 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setGeneratingProgress((prevProgress) => {
-        if (prevProgress >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        return prevProgress + 1;
-      });
-    }, 50);
+    const delay = setTimeout(() => {
+      let dayCounter = 1;
+      const interval = setInterval(() => {
+        setPerformanceData(prevData => {
+          const newData = [...prevData];
+          const lastValue = newData[newData.length - 1].value;
+          let newValue;
+          
+          if (dayCounter === 1) {
+            newValue = 70; // Reset to initial value for Day 1
+          } else {
+            // Gradually increase the value, with some randomness
+            newValue = Math.min(100, lastValue + (Math.random() * 3 + 2));
+          }
+          
+          newData.push({ name: `Day ${dayCounter}`, value: newValue });
+          if (newData.length > 7) newData.shift();
+          
+          dayCounter = (dayCounter % 7) + 1; // Loop back to 1 after reaching 7
+          return newData;
+        });
+      }, 2000);
 
-    return () => clearInterval(interval);
+      return () => {
+        clearInterval(interval);
+      };
+    }, 5000); // 5-second delay before starting the loop
+
+    return () => clearTimeout(delay);
   }, []);
 
   useEffect(() => {
@@ -118,27 +140,6 @@ function App() {
       }
     };
   }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
-  const performanceData = [
-    { name: 'Accuracy', value: 70 },
-    { name: 'Speed', value: 85 },
-    { name: 'Efficiency', value: 60 },
-    { name: 'Reliability', value: 90 }
-  ];
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -196,14 +197,13 @@ function App() {
     <div className="App">
       <header className="header">
         <div className="logo">KortexAI</div>
-        <nav className={`nav ${menuOpen ? 'active' : ''}`}>
+        <nav className="nav">
           <ul>
             {['home', 'ai-systems', 'modules', 'features', 'pricing', 'faq'].map((item) => (
               <li key={item}>
                 <a href={`#${item}`} onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(`#${item}`);
-                  setMenuOpen(false);
                 }}>
                   {item.charAt(0).toUpperCase() + item.slice(1).replace('-', ' ')}
                 </a>
@@ -212,11 +212,6 @@ function App() {
           </ul>
         </nav>
         <button className="create-account-btn">Create Account</button>
-        <div className={`menu-toggle ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
       </header>
 
       <section ref={mainSectionRef} className="main-section">
@@ -260,22 +255,35 @@ function App() {
                   <stop offset="95%" stopColor="#4a4af0" stopOpacity={0}/>
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#2a2a2a" />
-              <XAxis dataKey="name" stroke="#ffffff" axisLine={false} tickLine={false} />
-              <YAxis stroke="#ffffff" axisLine={false} tickLine={false} />
-              <Tooltip content={<CustomTooltip />} />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.05)" />
+              <XAxis 
+                dataKey="name" 
+                stroke="#ffffff" 
+                axisLine={false} 
+                tickLine={false}
+                tick={{ fontSize: 12, fill: 'rgba(255, 255, 255, 0.7)' }}
+              />
+              <YAxis 
+                stroke="#ffffff" 
+                axisLine={false} 
+                tickLine={false}
+                tick={{ fontSize: 12, fill: 'rgba(255, 255, 255, 0.7)' }}
+                tickFormatter={(value) => `${value}%`}
+              />
+              <Tooltip 
+                content={<CustomTooltip />}
+                cursor={{ stroke: 'rgba(255, 255, 255, 0.2)', strokeWidth: 1 }}
+              />
               <Area 
                 type="monotone" 
                 dataKey="value" 
                 stroke="#4a4af0" 
+                strokeWidth={3}
                 fillOpacity={1} 
                 fill="url(#colorValue)"
-                strokeWidth={3}
-                dot={{ r: 6, fill: "#4a4af0", stroke: "#ffffff", strokeWidth: 2 }}
-                activeDot={{ r: 8, fill: "#ffffff", stroke: "#4a4af0", strokeWidth: 2 }}
-              >
-                <LabelList dataKey="value" position="top" fill="#ffffff" />
-              </Area>
+                dot={{ r: 4, fill: "#4a4af0", stroke: "#ffffff", strokeWidth: 2 }}
+                activeDot={{ r: 6, fill: "#ffffff", stroke: "#4a4af0", strokeWidth: 2 }}
+              />
             </AreaChart>
           </ResponsiveContainer>
         </div>

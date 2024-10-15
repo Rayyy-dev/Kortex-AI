@@ -541,168 +541,128 @@ body {
 
 /* AI Pipeline Section */
 .ai-pipeline-section {
-  background-color: rgba(26, 26, 38, 0.8);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.2);
-  backdrop-filter: blur(10px);
-  margin: 30px auto;
-  max-width: 900px;
-  width: 95%;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.ai-pipeline-section:hover {
-  box-shadow: 0 12px 32px rgba(108, 99, 255, 0.3);
-  transform: translateY(-3px);
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: 20px;
+  padding: 3rem;
+  margin-top: 4rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .ai-pipeline-content {
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
-  gap: 30px;
-  position: relative;
-  z-index: 1;
+  align-items: center;
 }
 
 .ai-pipeline-text {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  padding-right: 2rem;
 }
 
 .ai-pipeline-subtitle {
+  font-size: 1.2rem;
   color: var(--primary-color);
-  font-size: 0.9rem;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: 600;
+  letter-spacing: 2px;
 }
 
 .ai-pipeline-title {
-  color: var(--text-color);
-  font-size: 2rem;
-  margin-bottom: 20px;
-  font-weight: 700;
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
 }
 
 .ai-pipeline-steps {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1.5rem;
 }
 
 .ai-pipeline-step {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  padding: 15px;
   display: flex;
   align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
   transition: all 0.3s ease;
 }
 
 .ai-pipeline-step:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
 }
 
 .step-icon {
-  font-size: 1.5rem;
-  margin-right: 15px;
-  color: var(--primary-color);
+  font-size: 2rem;
+  margin-right: 1.5rem;
 }
 
-.ai-pipeline-step h4 {
-  color: var(--text-color);
-  font-size: 1rem;
-  margin-bottom: 5px;
+.step-content h4 {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
 }
 
-.ai-pipeline-step p {
-  color: rgba(255, 255, 255, 0.7);
+.step-content p {
   font-size: 0.9rem;
-}
-
-.get-started-container {
-  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .get-started-btn {
-  background-color: var(--primary-color);
-  color: var(--text-color);
+  background: var(--primary-color);
+  color: #ffffff;
   border: none;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  border-radius: 25px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-top: 2rem;
 }
 
 .get-started-btn:hover {
-  background-color: var(--secondary-color);
-  transform: translateY(-2px);
+  background: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
 }
 
 .ai-pipeline-visual {
-  flex: 0 0 200px;
+  flex: 1;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .ai-orb {
-  width: 150px;
-  height: 150px;
-  background: conic-gradient(from 0deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at 30% 30%, var(--primary-color), var(--secondary-color));
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: rotate 10s linear infinite;
-  box-shadow: 0 0 30px rgba(108, 99, 255, 0.4);
+  position: relative;
+  box-shadow: 0 0 50px rgba(108, 99, 255, 0.5);
 }
 
-.ai-orb-inner {
+.ai-orb::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
   width: 80%;
   height: 80%;
-  background-color: rgba(26, 26, 38, 0.8);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  color: var(--primary-color);
+  filter: blur(20px);
 }
 
 .generating-text {
-  color: var(--text-color);
-  font-size: 0.9rem;
-  margin-top: 15px;
-  text-align: center;
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (max-width: 768px) {
-  .ai-pipeline-content {
-    flex-direction: column;
-  }
-
-  .ai-pipeline-visual {
-    margin-top: 20px;
-  }
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  font-size: 1rem;
+  white-space: nowrap;
 }
 
 /* Remove these styles */
@@ -955,7 +915,7 @@ body {
 
   .nav ul {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .create-account-btn {

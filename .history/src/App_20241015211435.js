@@ -285,53 +285,41 @@ function App() {
         <div className="background-section" ref={backgroundRef}>
           <div className="background-content">
             <div className="ai-solution-box">
-              <h2>AI Solutions</h2>
-              <p>Describe your issue and let our AI generate a solution for you!</p>
+              <h2>AI-Powered Solutions</h2>
+              <p>Harness the power of KortexAI to solve complex problems and drive innovation.</p>
               
-              {/* New AI Pipeline Section */}
               <div className="ai-pipeline-section">
                 <div className="ai-pipeline-content">
                   <div className="ai-pipeline-text">
-                    <h3 className="ai-pipeline-subtitle">AI Pipeline</h3>
-                    <h2 className="ai-pipeline-title">Generating solutions, end-to-end.</h2>
+                    <h3 className="ai-pipeline-subtitle">KortexAI Pipeline</h3>
+                    <h2 className="ai-pipeline-title">Intelligent Problem-Solving</h2>
                     <div className="ai-pipeline-steps">
-                      <div className={`ai-pipeline-step ${activeStep === 0 ? 'active' : ''}`}>
-                        <span className="step-icon">✨</span>
-                        <h4>Analyzing prompt...</h4>
-                        <p>KortexAI determines the subject and context of your issue.</p>
-                      </div>
-                      <div className={`ai-pipeline-step ${activeStep === 1 ? 'active' : ''}`}>
-                        <span className="step-icon">🔧</span>
-                        <h4>Crafting solutions...</h4>
-                        <p>Next, it generates tailored solutions based on the analysis.</p>
-                      </div>
-                      <div className={`ai-pipeline-step ${activeStep === 2 ? 'active' : ''}`}>
-                        <span className="step-icon">🚀</span>
-                        <h4>Review and implement!</h4>
-                        <p>The solution is ready – your turn to put it into action.</p>
-                      </div>
-                    </div>
-                    <div className="get-started-container">
-                      <button className="get-started-btn">Get Started</button>
+                      {[
+                        { icon: '🧠', title: 'Analyze', description: 'KortexAI processes and understands your input.' },
+                        { icon: '💡', title: 'Generate', description: 'Our AI crafts tailored solutions based on analysis.' },
+                        { icon: '🚀', title: 'Implement', description: 'Review and apply the AI-generated solution.' },
+                        { icon: '📊', title: 'Optimize', description: 'Continuously improve based on feedback and results.' }
+                      ].map((step, index) => (
+                        <div key={index} className={`ai-pipeline-step ${activeStep === index ? 'active' : ''}`}>
+                          <span className="step-icon">{step.icon}</span>
+                          <div className="step-content">
+                            <h4>{step.title}</h4>
+                            <p>{step.description}</p>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                   <div className="ai-pipeline-visual">
                     <div className="ai-orb">
                       <div className="ai-orb-inner"></div>
                     </div>
-                    <p className="generating-text">Generating your solution... {generatingProgress}%</p>
+                    <p className="generating-text">AI Processing: {generatingProgress}%</p>
                   </div>
                 </div>
               </div>
 
-              {/* Existing input and output areas */}
-              <div className="input-group">
-                <input type="text" placeholder="Enter your issue here..." />
-                <button className="generate-btn">Generate Solution</button>
-              </div>
-              <div className="solution-output">
-                <p>AI-generated solution will appear here...</p>
-              </div>
+              <button className="get-started-btn">Start Your AI Journey</button>
             </div>
 
             {/* New FAQ Section */}

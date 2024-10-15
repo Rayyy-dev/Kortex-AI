@@ -6,13 +6,14 @@
 }
 
 :root {
-  --primary-color: #6C63FF;
-  --secondary-color: #4A47B1;
-  --background-color: #0F0F1A;
-  --text-color: #FFFFFF;
+  --primary-color: #4a4af0;
+  --secondary-color: #6c63ff;
+  --background-color: #0f0f1a;
+  --text-color: #ffffff;
   --accent-color: #FF6B6B;
   --gradient-start: rgba(108, 99, 255, 0.1);
   --gradient-end: rgba(74, 71, 177, 0.05);
+  --card-bg: rgba(255, 255, 255, 0.05);
 }
 
 body {
@@ -1413,4 +1414,113 @@ html {
 .slide-in.visible {
   transform: translateY(0);
   opacity: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 3rem;
+}
+
+/* AI Capabilities Section */
+.ai-solutions-section {
+  padding: 5rem 0;
+  background-color: var(--background-color);
+}
+
+.ai-capabilities {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.ai-capability-card {
+  background: linear-gradient(145deg, rgba(26, 26, 38, 0.6), rgba(38, 38, 54, 0.6));
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ai-capability-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.capability-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.ai-capability-card h3 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.ai-capability-card p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* AI Pipeline Section */
+.ai-pipeline-section {
+  padding: 5rem 0;
+  background-color: rgba(26, 26, 38, 0.3);
+}
+
+.ai-pipeline-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.pipeline-step {
+  display: flex;
+  align-items: flex-start;
+  background: linear-gradient(145deg, rgba(26, 26, 38, 0.6), rgba(38, 38, 54, 0.6));
+  border-radius: 15px;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pipeline-step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.step-number {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-right: 1rem;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.pipeline-step h3 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.pipeline-step p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
 }
