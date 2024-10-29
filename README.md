@@ -5,7 +5,7 @@
 
 KortexAI is a cutting-edge AI-powered solution generator with a modern UI, showcasing my expertise in **JavaScript** and **React** as part of my professional portfolio.
 
-🌐 **[Live Demo on Vercel](https://kortex-aii.vercel.app)**
+🌐 **[ Vercel](https://kortex-aii.vercel.app)**
 
 ---
 
