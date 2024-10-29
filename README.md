@@ -1,5 +1,8 @@
 
 #                    KortexAI 🤖
+ <p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=4000&pause=1000&color=39C3D4&center=true&vCenter=true&width=700&lines=Welcome+to+Kortex+AI!+⚡;Built+with+React.js%2C+JavaScript%2C+and+Vercel!">
+</p>
 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fkortex-aii.vercel.app&style=for-the-badge)](https://kortex-aii.vercel.app) [![Made with React](https://img.shields.io/badge/Built%20with-React-blue?style=for-the-badge&logo=react)](https://reactjs.org/) 
 
