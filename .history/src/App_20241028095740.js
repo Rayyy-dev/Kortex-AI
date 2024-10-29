@@ -1,0 +1,1 @@
+import { CompactCryptoDashboardGenerator } from './CryptoDashboard';

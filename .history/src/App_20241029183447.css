@@ -1,0 +1,30 @@
+.ai-solutions-section {
+  position: relative;
+  padding: 6rem 0;
+  background: linear-gradient(180deg, rgba(15, 15, 30, 0.95), rgba(10, 10, 20, 0.98));
+}
+
+.section-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.solutions-content {
+  display: grid;
+  grid-template-columns: minmax(400px, 1fr) minmax(500px, 2fr);
+  gap: 3.5rem;
+  align-items: start;
+}
+
+/* Remove these styles as they're no longer needed */
+.ai-solutions-header {
+  display: none;
+}
+
+.ai-solutions-title,
+.ai-solutions-subtitle {
+  display: none;
+}
+
+

@@ -1,0 +1,969 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #6C63FF;
+  --secondary-color: #4A47B1;
+  --background-color: #0F0F1A;
+  --text-color: #FFFFFF;
+  --accent-color: #FF6B6B;
+  --gradient-start: rgba(108, 99, 255, 0.1);
+  --gradient-end: rgba(74, 71, 177, 0.05);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Navbar Styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background-color: rgba(15, 15, 26, 0.95);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.nav {
+  display: flex;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav ul li {
+  margin-left: 2rem;
+}
+
+.nav ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav ul li a:hover {
+  color: var(--primary-color);
+}
+
+.create-account-btn {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.create-account-btn:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff;
+  margin: 2px 0;
+  transition: all 0.3s ease;
+}
+
+/* Main Hero Section Styling */
+.main-section {
+  background: linear-gradient(135deg, #0B0B1E 0%, #151528 100%);
+  min-height: 80vh; /* Reduced height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(74, 74, 240, 0.08) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(108, 99, 255, 0.05) 0%,
+      transparent 40%
+    );
+  pointer-events: none;
+}
+
+/* Additional styles to enhance existing design */
+
+/* Enhanced gradient overlays for depth */
+.main-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(74, 74, 240, 0.08) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(108, 99, 255, 0.05) 0%,
+      transparent 40%
+    );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Enhanced title gradient */
+.main-title {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Subtle hover effects for buttons */
+.open-app-btn:hover,
+.discover-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(74, 74, 240, 0.3);
+}
+
+/* Enhanced partner strip */
+.partner-strip-content span {
+  transition: all 0.3s ease;
+}
+
+.partner-strip-content span:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Subtle animation for metrics cards */
+.metrics-card {
+  transition: transform 0.3s ease;
+}
+
+.metrics-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Enhanced text contrast */
+.main-subtitle {
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive enhancements */
+@media (max-width: 768px) {
+  .main-section::after {
+    opacity: 0.7;
+  }
+}
+
+/* Content Styling */
+.content-container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+/* Enhanced Title Styling */
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* Keep the existing button styles you liked */
+.buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.open-app-btn,
+.discover-more-btn {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.open-app-btn {
+  background: linear-gradient(135deg, #4a4af0 0%, #4a4af0 100%);
+  color: white;
+  border: none;
+}
+
+.discover-more-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.open-app-btn::before,
+.discover-more-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transform: skewX(-15deg);
+  transition: all 0.5s ease;
+}
+
+.open-app-btn:hover::before,
+.discover-more-btn:hover::before {
+  left: 100%;
+}
+
+.open-app-btn:hover,
+.discover-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(74, 74, 240, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .main-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* Footer Section Styling */
+.footer-section {
+  background: linear-gradient(180deg, #0B0B1E 0%, #070711 100%);
+  padding: 5rem 0 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.footer-column h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-column ul li a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-column ul li a:hover {
+  color: var(--primary-color);
+  transform: translateX(5px);
+}
+
+.beta-tag, .new-tag {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.beta-tag {
+  background: rgba(var(--primary-color-rgb), 0.1);
+  color: var(--primary-color);
+}
+
+.new-tag {
+  background: rgba(var(--accent-color-rgb), 0.1);
+  color: var(--accent-color);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 4rem auto 0;
+  padding: 2rem 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.social-links a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.awards {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.award-text {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 768px) {
+  .footer-links {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+
+/* Graph Section */
+.graph-section {
+  background-color: rgba(10, 10, 10, 0.8);
+  padding: 4rem 0;
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.graph-title {
+  text-align: center;
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.graph-container {
+  max-width: 900px;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 30px rgba(74, 74, 240, 0.2);
+}
+
+/* Recharts Customization */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #2a2a2a;
+}
+
+.recharts-text {
+  fill: #ffffff;
+  font-size: 0.9rem;
+}
+
+.recharts-line {
+  filter: drop-shadow(0 0 8px rgba(74, 74, 240, 0.6));
+}
+
+.recharts-tooltip-wrapper {
+  filter: drop-shadow(0 0 10px rgba(74, 74, 240, 0.8));
+}
+
+.custom-tooltip {
+  background-color: rgba(26, 26, 26, 0.9);
+  border: 1px solid #4a4af0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(74, 74, 240, 0.4);
+}
+
+.custom-tooltip .label {
+  color: #ffffff;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .header {
+    padding: 20px;
+  }
+
+  .nav ul {
+    gap: 10px;
+  }
+
+  .nav ul li {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
+
+  .create-account-btn {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .main-subtitle {
+    font-size: 1rem;
+  }
+
+  .graph-container {
+    height: 300px;
+    padding: 10px;
+  }
+
+  .graph-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Parallax Section */
+.parallax-section {
+  position: relative;
+  background: linear-gradient(135deg, #0a0a0a, #000000);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.parallax-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(74, 74, 240, 0.1) 0%, rgba(74, 74, 240, 0) 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 20px;
+}
+
+/* AI Solution Box Styles */
+.ai-solution-box {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 3rem 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ai-solution-box h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.8));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.ai-solution-box > p {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Modern AI Pipeline Section */
+.ai-pipeline-section {
+  display: grid;
+  grid-template-columns: minmax(400px, 1fr) minmax(500px, 2fr);
+  gap: 3rem;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Left Panel Improvements */
+.pipeline-left {
+  padding: 3.5rem;
+  background: linear-gradient(165deg, rgba(20, 20, 40, 0.95), rgba(15, 15, 30, 0.98));
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 
+    0 25px 45px rgba(0, 0, 0, 0.2),
+    inset 0 0 80px rgba(var(--primary-color-rgb), 0.05);
+  backdrop-filter: blur(20px);
+}
+
+/* Modern Header Styling */
+.pipeline-left h2 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 30%, rgba(255, 255, 255, 0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+}
+
+.pipeline-left h3 {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-bottom: 3.5rem;
+}
+
+/* Enhanced Step Display */
+.pipeline-step {
+  background: linear-gradient(145deg, 
+    rgba(255, 255, 255, 0.05), 
+    rgba(255, 255, 255, 0.02)
+  );
+  border-radius: 24px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pipeline-step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--primary-color);
+  box-shadow: 0 0 20px var(--primary-color);
+  opacity: 0.7;
+}
+
+.pipeline-step:hover {
+  transform: translateY(-2px) translateX(2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.07);
+  background: linear-gradient(145deg, 
+    rgba(255, 255, 255, 0.07), 
+    rgba(255, 255, 255, 0.03)
+  );
+}
+
+.step-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.step-title::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--primary-color);
+}
+
+.step-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Modern Progress Bar */
+.progress-container {
+  margin-top: 3rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2.5rem;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(var(--primary-color-rgb), 0.03)
+  );
+}
+
+.progress-bar {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(124, 58, 237, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.crypto-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.crypto-icon {
+  font-size: 1.5rem;
+}
+
+.crypto-symbol {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.crypto-price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0.5rem 0;
+}
+
+.chart-container {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.loading-indicator {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0.8;
+  animation: pulse 1.5s infinite;
+}
+
+
+
+/* Keep the modern styling for sections */
+.ai-solution-box,
+.faq-section,
+.pipeline-left,
+.preview-container {
+  background: none;
+  border: none;
+  box-shadow: none;
+  position: relative;
+  z-index: 2;
+}
+
+/* Ensure particles only appear in hero section */
+.main-section .particle {
+  display: block; /* Keep particles only in hero section */
+}
+
+/* Content z-index adjustments */
+.content-container,
+.metrics-grid,
+.background-content,
+.ai-pipeline-content,
+.faq-list,
+.footer-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Unified Background Gradient for Sections */
+.main-content {
+  background: linear-gradient(
+    180deg,
+    #0B0B1E 0%,
+    #0D0D24 30%,
+    #0F0F28 60%,
+    #0B0B1E 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle Radial Overlays */
+.main-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(
+      circle at 0% 30%,
+      rgba(74, 74, 240, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 100% 70%,
+      rgba(108, 99, 255, 0.03) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+/* Section Specific Adjustments */
+.ai-pipeline-section,
+.faq-section,
+.footer-section {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+/* Ensure content stays above gradient */
+.ai-pipeline-content,
+.faq-list,
+.footer-links,
+.footer-bottom {
+  position: relative;
+  z-index: 2;
+}
+
+/* Specific styling just for the AI Solutions header */
+.ai-solutions-header {
+  text-align: center;
+  padding: 6rem 0 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ai-solutions-title {
+  font-size: 3.5rem;  /* Consistent with other main headers */
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.ai-solutions-subtitle {
+  font-size: 1.2rem;  /* Consistent with other subtitles */
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .ai-solutions-title,
+  .pipeline-left h2 {
+    font-size: 2.5rem;
+  }
+  
+  .ai-solutions-subtitle,
+  .pipeline-left h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Partner Strip Alignment Fix */
+.partner-strip {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  padding: 2rem 0;
+}
+
+.partner-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.partner-icon {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.partner-name {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Analytics Metrics Layout Fix */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.metric-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.metric-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.metric-icon {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.metric-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .partner-strip {
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
