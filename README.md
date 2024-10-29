@@ -1,17 +1,49 @@
-# KortexAI
 
-KortexAI is a cutting-edge AI-powered solution generator built with modern web technologies. This project highlights my expertise in front-end development, particularly in **JavaScript** and **React**, and serves as part of my professional portfolio.
+#                    KortexAI 🤖
 
-## Project Overview
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fkortex-aii.vercel.app&style=for-the-badge)](https://kortex-aii.vercel.app) [![Made with React](https://img.shields.io/badge/Built%20with-React-blue?style=for-the-badge&logo=react)](https://reactjs.org/) 
 
-KortexAI helps users generate solutions by analyzing prompts and crafting tailored responses. The application is designed with a sleek, modern UI and provides real-time performance metrics, offering insights into **accuracy**, **speed**, **efficiency**, and **reliability**.
+KortexAI is a cutting-edge AI-powered solution generator with a modern UI, showcasing my expertise in **JavaScript** and **React** as part of my professional portfolio.
 
-## Key Features
+🌐 **[Live Demo on Vercel](https://kortex-aii.vercel.app)**
 
-- **AI-Powered Solutions:** Input a prompt, and KortexAI will generate a detailed, end-to-end solution.
-- **Performance Metrics:** Real-time tracking of performance metrics such as accuracy, speed, efficiency, and reliability.
-- **Responsive Design:** Optimized for multiple devices and screen sizes.
-- **Interactive UI:** Built with **React** for a seamless, dynamic user experience.
+---
+
+## 📈 Project Overview
+
+KortexAI helps users generate tailored solutions by analyzing prompts. It’s designed with a sleek UI that provides real-time performance metrics like **accuracy**, **speed**, **efficiency**, and **reliability**.
+
+<p align="center">
+  <img src="animations/overview-animation.gif" alt="KortexAI Overview Animation" width="75%">
+</p>
+
+
+![Screenshot 2024-10-29 210243](https://github.com/user-attachments/assets/53ff2bfb-3257-4545-a4c5-7a907dc4ec11)
+
+---
+
+## ✨ Key Features
+
+- **AI-Powered Solutions**: Generates detailed solutions based on user input prompts.
+- **Performance Metrics**: Real-time tracking of metrics such as accuracy, speed, efficiency, and reliability.
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices.
+- **Interactive UI**: Built with **React** for a seamless, dynamic experience.
+
+<p align="center">
+  <img src="animations/features-animation.gif" alt="Feature Animation" width="75%">
+</p>
+
+---
+
+## 🎯 Demo
+
+Explore the [live demo on Vercel](https://kortex-aii.vercel.app) to see KortexAI in action.
+
+<p align="center">
+  <img src="animations/demo-animation.gif" alt="Demo Animation" width="75%">
+</p>
+
+---
 
 
 
